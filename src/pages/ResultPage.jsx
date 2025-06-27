@@ -2,16 +2,15 @@ import React from "react";
 import StatsCards from "../components/StatsCards";
 import JobResults from "../components/JobResults";
 import { useSelector } from "react-redux";
-import { setApiOneData, setApiTwoData } from "../features/Data/DataSlice";
+import { setApiOneData, setApiTwoData } from "../features/data/dataSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 function ResultPage() {
+  const dispatch = useDispatch();
 
-   const dispatch = useDispatch();
-
-    const API_ID = import.meta.env.VITE_API_ID;
-    const API_KEY = import.meta.env.VITE_API_KEY;
+  const API_ID = import.meta.env.VITE_API_ID;
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   const TOP_COMPANIES_URL =
     "http://api.adzuna.com/v1/api/jobs/gb/top_companies";
@@ -46,25 +45,23 @@ function ResultPage() {
     dispatch(setApiTwoData(arr.results));
   };
 
-  const apiOneData = useSelector((state)=> state.data.apiOneData)
+  const apiOneData = useSelector((state) => state.data.apiOneData);
 
   const apiTwoData = useSelector((state) => state.data.apiTwoData);
 
-  
-
   return (
     <div className="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8 py-10 overflow-x-hidden">
-  {/* Title */}
-  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">
-    Job Market Insights for “{localStorage.getItem("role")}”
-  </h2>
+      {/* Title */}
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">
+        Job Market Insights for “{localStorage.getItem("role")}”
+      </h2>
 
-  {/* Market Stats Cards */}
-  <StatsCards data={apiOneData} />
+      {/* Market Stats Cards */}
+      <StatsCards data={apiOneData} />
 
-  {/* Job Listings Section */}
-  <JobResults />
-</div>
+      {/* Job Listings Section */}
+      <JobResults />
+    </div>
   );
 }
 
