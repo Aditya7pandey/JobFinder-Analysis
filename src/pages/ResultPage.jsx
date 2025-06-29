@@ -12,8 +12,7 @@ function ResultPage() {
   const API_ID = import.meta.env.VITE_API_ID;
   const API_KEY = import.meta.env.VITE_API_KEY;
 
-  const TOP_COMPANIES_URL =
-    "http://api.adzuna.com/v1/api/jobs/gb/top_companies";
+  const TOP_COMPANIES_URL ="https://api.adzuna.com/v1/api/jobs/gb/top_companies";
   const JOB_LISTING_URL = "https://api.adzuna.com/v1/api/jobs/in/search/1";
 
   useEffect(() => {
